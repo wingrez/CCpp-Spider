@@ -1,0 +1,16 @@
+HTTP/1.1 301 Moved Permanently
+Server: openresty
+Date: Wed, 08 May 2019 17:16:50 GMT
+Content-Type: text/html
+Content-Length: 182
+Connection: keep-alive
+Keep-Alive: timeout=20
+Location: https://www.csdn.net/
+
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body bgcolor="white">
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>openresty</center>
+</body>
+</html>

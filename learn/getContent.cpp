@@ -31,7 +31,7 @@ int main() {
 	}
 
 	char szHttpRest[1024] = {0};
-	sprintf(szHttpRest, "GET https://www.baidu.com/ HTTP/1.1\r\nHost:%s\r\nConnection: Keep-Alive\r\n", domain);
+	sprintf(szHttpRest, "GET / HTTP/1.1\r\nHost: %s\r\nConnection: Keep-Alive\r\n\r\n", domain);
 
 	printf("发送请求：\n");
 	printf("%s\n", szHttpRest);
@@ -53,7 +53,6 @@ int main() {
 	} else {
 		printf("内容获取成功\n");
 	}
-
 	fprintf(fp, "%s", szRecvBuf);
 
 	return 0;
