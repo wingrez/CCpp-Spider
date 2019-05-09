@@ -15,5 +15,7 @@ int main() {
 	const char *pIp=inet_ntoa(*((struct in_addr *)pHost->h_addr));
 	printf("%s\n", pIp);
 
+	WSACleanup();
+	
 	return 0;
 }

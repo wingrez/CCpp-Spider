@@ -25,12 +25,13 @@ int main() {
 
 	if(nRet<0) {
 		printf("网站连接失败！\n");
+		exit(1);
 	} else {
 		printf("网站连接成功！\n");
 	}
 
 	char szHttpRest[1024] = {0};
-	sprintf(szHttpRest, "GET https://www.baidu.com/ HTTP/1.1\r\nHost:%s\r\nConnection: Keep-Alive\r\n", domain);
+	sprintf(szHttpRest, "GET / HTTP/1.1\r\nHost: %s\r\nConnection: Keep-Alive\r\n\r\n", domain);
 
 	printf("发送请求：\n");
 	printf("%s\n", szHttpRest);
@@ -41,6 +42,9 @@ int main() {
 	} else {
 		printf("请求发送成功！\n");
 	}
+	
+	closesocket(sockClient);
+	WSACleanup();
 	
 	return 0;
 }

@@ -44,16 +44,26 @@ int main() {
 		printf("请求发送成功！\n");
 	}
 
-	FILE *fp = fopen("data.txt", "wb");
+	FILE *fp = fopen("data.txt", "wb+");
 	char szRecvBuf[1024] = {0};
-	nRet = recv(sockClient ,szRecvBuf, 1023, 0);
-	if(nRet < 0) {
-		printf("内容获取失败\n");
-		exit(3);
-	} else {
-		printf("内容获取成功\n");
+	while(true) {
+		nRet = recv(sockClient ,szRecvBuf, 1023, 0);
+		if(nRet < 0) {
+			printf("内容获取失败！\n");
+			exit(3);
+		} else if(nRet==0) {
+			printf("内容获取完成！\n");
+			break;
+		} else {
+			printf("内容获取中...\n");
+			szRecvBuf[nRet]=0;
+			fprintf(fp, "%s", szRecvBuf);
+		}
 	}
-	fprintf(fp, "%s", szRecvBuf);
 
+	fclose(fp);
+	closesocket(sockClient);
+	WSACleanup();
+	
 	return 0;
 }

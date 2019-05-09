@@ -28,6 +28,9 @@ int main() {
 	} else {
 		printf("网站连接成功！\n");
 	}
+	
+	closesocket(sockClient);
+	WSACleanup();
 
 	return 0;
 }
