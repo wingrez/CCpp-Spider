@@ -1,10 +1,12 @@
 /*
-	发送请求
+	获取网页内容 
 */
 
 #include<cstdio>
 #include<winsock2.h>
 #pragma comment(lib, "ws2_32.lib")
+
+#define FILENAME "data.txt" 
 
 int main() {
 	WSADATA wsaData;
@@ -44,7 +46,7 @@ int main() {
 		printf("请求发送成功！\n");
 	}
 
-	FILE *fp = fopen("data.txt", "wb+");
+	FILE *fp = fopen(FILENAME, "wb+");
 	char szRecvBuf[1024] = {0};
 	while(true) {
 		nRet = recv(sockClient ,szRecvBuf, 1023, 0);
